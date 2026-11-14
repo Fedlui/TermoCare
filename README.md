@@ -17,6 +17,12 @@
 
 <br>
 
+<p align="center">
+  <img src="assets/funcionamiento.svg" alt="Animación: el parche emite una onda de calor, la lee y avisa por Telegram" width="100%">
+</p>
+
+<br>
+
 ## La idea en una frase
 
 Un parche en el antebrazo **envía una pequeña onda de calor hacia la piel y escucha cómo regresa**. Con lo que tarda y lo que se debilita, calcula la temperatura del interior del cuerpo, no solo la de la piel.
