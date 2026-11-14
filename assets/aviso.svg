@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif">
+<defs>
+<filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#0b2545" flood-opacity="0.15"/></filter>
+<radialGradient id="fever"><stop offset="0" stop-color="#d62839" stop-opacity="0.45"/><stop offset="1" stop-color="#d62839" stop-opacity="0"/></radialGradient>
+<radialGradient id="warm"><stop offset="0" stop-color="#e9b949" stop-opacity="0.4"/><stop offset="1" stop-color="#e9b949" stop-opacity="0"/></radialGradient>
+<clipPath id="scr"><rect x="905" y="96" width="210" height="418" rx="26"/></clipPath>
+</defs>
+<rect width="1200" height="600" fill="#f6f8fb"/>
+<text x="40" y="52" font-size="26" font-weight="700" fill="#0b2545">Así te avisa ThermoCare</text>
+<text x="40" y="78" font-size="15" fill="#5b6b7f">La familia y enfermería se enteran de la fiebre en el momento en que empieza, no horas después.</text>
+<rect x="40" y="100" width="560" height="380" rx="18" fill="#ffffff" filter="url(#sh)"/>
+<rect x="40" y="400" width="560" height="80" fill="#eef2f7"/><rect x="40" y="398" width="560" height="4" fill="#d9e0e8"/>
+<rect x="420" y="130" width="140" height="110" rx="8" fill="#cfe4f7"><animate attributeName="fill" values="#cfe4f7;#f6d7b5;#3a4a6b" keyTimes="0;0.3;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/></rect>
+<line x1="490" y1="130" x2="490" y2="240" stroke="#fff" stroke-width="4"/><line x1="420" y1="185" x2="560" y2="185" stroke="#fff" stroke-width="4"/>
+<g opacity="0"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0.0000;0.2850;0.3000;1.0000" dur="14s" repeatCount="indefinite"/><text x="70" y="148" font-size="30" font-weight="800" fill="#0b2545">15:40</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.2850;0.3000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="70" y="148" font-size="30" font-weight="800" fill="#0b2545">17:10</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="70" y="148" font-size="30" font-weight="800" fill="#0b2545">18:25</text></g>
+<text x="70" y="170" font-size="12" fill="#5b6b7f" letter-spacing="1.5">EN CASA</text>
+<rect x="150" y="300" width="250" height="100" rx="22" fill="#9db4cf"/><rect x="130" y="270" width="50" height="130" rx="20" fill="#89a3c2"/><rect x="370" y="270" width="50" height="130" rx="20" fill="#89a3c2"/><rect x="170" y="230" width="210" height="90" rx="24" fill="#a9bfd8"/>
+<circle cx="275" cy="270" r="150" fill="url(#warm)" opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.2850;0.3000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/></circle>
+<circle cx="275" cy="270" r="160" fill="url(#fever)" opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><animate attributeName="r" values="140;170;140" dur="2s" repeatCount="indefinite"/></circle>
+<circle cx="275" cy="200" r="34" fill="#e0a98a"/><path d="M243 190 C245 160 305 160 307 190 C300 176 252 176 243 190 Z" fill="#3b2a24"/>
+<circle cx="263" cy="200" r="3" fill="#3b2a24"/><circle cx="287" cy="200" r="3" fill="#3b2a24"/>
+<path d="M266 218 Q275 220 284 218" stroke="#3b2a24" stroke-width="2" fill="none" stroke-linecap="round"/>
+<rect x="232" y="236" width="86" height="100" rx="30" fill="#5c7ea8"/>
+<path d="M312 262 C350 270 372 286 398 300" stroke="#5c7ea8" stroke-width="24" stroke-linecap="round" fill="none"/><path d="M380 292 C400 302 420 306 440 304" stroke="#e0a98a" stroke-width="20" stroke-linecap="round" fill="none"/>
+<path d="M238 262 C215 285 210 300 222 318" stroke="#5c7ea8" stroke-width="24" stroke-linecap="round" fill="none"/>
+<rect x="246" y="336" width="26" height="70" rx="12" fill="#2f4a6d"/><rect x="280" y="336" width="26" height="70" rx="12" fill="#2f4a6d"/>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><circle cx="262" cy="210" r="6" fill="#d62839" opacity="0.45"/><circle cx="288" cy="210" r="6" fill="#d62839" opacity="0.45"/></g>
+<rect x="398" y="293" width="34" height="16" rx="6" fill="#ffffff" stroke="#0b2545" stroke-width="1.5" transform="rotate(8 415 301)"/>
+<circle cx="424" cy="302" r="4" fill="#2a9d8f"><animate attributeName="fill" values="#2a9d8f;#e9b949;#d62839" keyTimes="0;0.3;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.35;1" dur="1.2s" repeatCount="indefinite"/></circle>
+<g filter="url(#sh)"><rect x="70" y="210" width="130" height="66" rx="14" fill="#fff"/></g>
+<text x="86" y="232" font-size="11" fill="#5b6b7f" font-weight="600" letter-spacing="1">NÚCLEO</text>
+<g opacity="0"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0.0000;0.2850;0.3000;1.0000" dur="14s" repeatCount="indefinite"/><text x="86" y="262" font-size="24" font-weight="800" fill="#2a9d8f">36.8 °C</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.2850;0.3000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="86" y="262" font-size="24" font-weight="800" fill="#b8860b">37.6 °C</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="86" y="262" font-size="24" font-weight="800" fill="#d62839">38.4 °C</text></g>
+<path d="M440 300 C520 296 580 200 638 182" fill="none" stroke="#d9e0e8" stroke-width="2" stroke-dasharray="5 6"/>
+<circle r="5" fill="#2a9d8f"><animate attributeName="fill" values="#2a9d8f;#e9b949;#d62839" keyTimes="0;0.3;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/><animateMotion path="M440 300 C520 296 580 200 638 182" dur="1.4s" repeatCount="indefinite"/></circle>
+<path d="M724 176 C790 168 840 190 888 222" fill="none" stroke="#d9e0e8" stroke-width="2" stroke-dasharray="5 6"/>
+<circle r="5" fill="#2a9d8f"><animate attributeName="fill" values="#2a9d8f;#e9b949;#d62839" keyTimes="0;0.3;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/><animateMotion path="M724 176 C790 168 840 190 888 222" dur="1.2s" repeatCount="indefinite"/></circle>
+<path d="M690 212 C690 250 720 270 740 296" fill="none" stroke="#d9e0e8" stroke-width="2" stroke-dasharray="5 6"/>
+<circle r="5" fill="#2a9d8f"><animate attributeName="fill" values="#2a9d8f;#e9b949;#d62839" keyTimes="0;0.3;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/><animateMotion path="M690 212 C690 250 720 270 740 296" dur="1.0s" repeatCount="indefinite"/></circle>
+<g transform="translate(680,170)"><ellipse cx="0" cy="12" rx="44" ry="22" fill="#e3ecf6"/><circle cx="-18" cy="0" r="20" fill="#e3ecf6"/><circle cx="14" cy="-4" r="24" fill="#e3ecf6"/><text x="0" y="16" font-size="11" fill="#0b2545" text-anchor="middle" font-weight="700">ThermoCare</text></g>
+<g filter="url(#sh)"><rect x="630" y="300" width="230" height="170" rx="16" fill="#111827"/></g><rect x="640" y="310" width="210" height="150" rx="10" fill="#ffffff"/>
+<text x="652" y="332" font-size="11" fill="#5b6b7f" font-weight="700" letter-spacing="1">ENFERMERÍA · PISO 3</text>
+<rect x="646" y="340" width="198" height="24" rx="6" fill="#ffffff"><animate attributeName="fill" values="#ffffff;#fde7e9" keyTimes="0;0.6" dur="14s" calcMode="discrete" repeatCount="indefinite"/></rect>
+<circle cx="660" cy="352" r="5" fill="#2a9d8f"><animate attributeName="fill" values="#2a9d8f;#e9b949;#d62839" keyTimes="0;0.3;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/></circle><text x="672" y="356" font-size="12.5" fill="#0b2545" font-weight="700">Ana R.</text>
+<g opacity="0"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0.0000;0.2850;0.3000;1.0000" dur="14s" repeatCount="indefinite"/><text x="836" y="356" font-size="12.5" fill="#2a9d8f" font-weight="700" text-anchor="end">36.8 °C</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.2850;0.3000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="836" y="356" font-size="12.5" fill="#b8860b" font-weight="700" text-anchor="end">37.6 °C</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="836" y="356" font-size="12.5" fill="#d62839" font-weight="700" text-anchor="end">38.4 °C</text></g>
+<circle cx="660" cy="378" r="5" fill="#2a9d8f"/><text x="672" y="382" font-size="12.5" fill="#0b2545">Luis M.</text><text x="836" y="382" font-size="12.5" fill="#2a9d8f" text-anchor="end">36.9 °C</text>
+<circle cx="660" cy="404" r="5" fill="#2a9d8f"/><text x="672" y="408" font-size="12.5" fill="#0b2545">Sofía T.</text><text x="836" y="408" font-size="12.5" fill="#2a9d8f" text-anchor="end">37.1 °C</text>
+<circle cx="660" cy="430" r="5" fill="#2a9d8f"/><text x="672" y="434" font-size="12.5" fill="#0b2545">Jorge P.</text><text x="836" y="434" font-size="12.5" fill="#2a9d8f" text-anchor="end">36.6 °C</text>
+<g filter="url(#sh)"><rect x="895" y="84" width="230" height="442" rx="34" fill="#111827"/></g>
+<rect x="905" y="96" width="210" height="418" rx="26" fill="#1f3b63"><animate attributeName="fill" values="#1f3b63;#1f3b63" keyTimes="0;0.58" dur="14s" calcMode="discrete" repeatCount="indefinite"/></rect>
+<g clip-path="url(#scr)"><rect x="905" y="96" width="210" height="418" fill="none"/>
+<rect x="975" y="104" width="70" height="20" rx="10" fill="#111827"/>
+<g opacity="0"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0.0000;0.2850;0.3000;1.0000" dur="14s" repeatCount="indefinite"/><text x="1010" y="190" font-size="50" font-weight="300" fill="#ffffff" text-anchor="middle">15:40</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.2850;0.3000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="1010" y="190" font-size="50" font-weight="300" fill="#ffffff" text-anchor="middle">17:10</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><text x="1010" y="190" font-size="50" font-weight="300" fill="#ffffff" text-anchor="middle">18:25</text></g>
+<text x="1010" y="214" font-size="13" fill="#c7d6e8" text-anchor="middle">Celular de su hija</text>
+<g opacity="0" transform="translate(0,-90)"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.5850;0.6000;0.9550;0.9700;1.0000" dur="14s" repeatCount="indefinite"/><animateTransform attributeName="transform" type="translate" values="0,-90;0,-90;0,0;0,0" keyTimes="0;0.6;0.64;1" dur="14s" repeatCount="indefinite"/>
+<rect x="914" y="240" width="192" height="92" rx="16" fill="#ffffff" fill-opacity="0.96"/>
+<rect x="926" y="252" width="22" height="22" rx="6" fill="#ef6c35"/><path d="M930 265 C932 265 933 259 935 259 S938 268 940 268 S943 262 944 262" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+<text x="955" y="267" font-size="11" fill="#5b6b7f" font-weight="600">THERMOCARE · ahora</text>
+<text x="926" y="294" font-size="13.5" fill="#0b2545" font-weight="700">Ana tiene fiebre: 38.4 °C</text>
+<text x="926" y="312" font-size="11" fill="#5b6b7f">Enfermería ya fue avisada.</text>
+<text x="926" y="326" font-size="11" fill="#5b6b7f">Toca para ver su gráfica.</text>
+</g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.5850;0.6000;0.6850;0.7000;1.0000" dur="14s" repeatCount="indefinite"/><path d="M884 260 l-8 8 l8 8 l-8 8" stroke="#ef6c35" stroke-width="2.5" fill="none"/><path d="M1136 260 l8 8 l-8 8 l8 8" stroke="#ef6c35" stroke-width="2.5" fill="none"/></g>
+</g>
+<rect x="40" y="500" width="820" height="72" rx="14" fill="#0b2545"/>
+<g opacity="0"><animate attributeName="opacity" values="1;1;0;0" keyTimes="0.0000;0.2850;0.3000;1.0000" dur="14s" repeatCount="indefinite"/><circle cx="74" cy="536" r="10" fill="#2a9d8f"/><text x="96" y="542" font-size="16" fill="#ffffff">Todo normal. El parche mide sin que Ana tenga que hacer nada.</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0.0000;0.2850;0.3000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><circle cx="74" cy="536" r="10" fill="#e9b949"/><text x="96" y="542" font-size="16" fill="#ffffff">La temperatura empieza a subir. La luz del parche pasa a amarillo.</text></g>
+<g opacity="0"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0.0000;0.5650;0.5800;1.0000" dur="14s" repeatCount="indefinite"/><circle cx="74" cy="536" r="10" fill="#d62839"/><text x="96" y="542" font-size="16" fill="#ffffff">Fiebre. En segundos, su familia recibe este aviso y enfermería lo ve en su pantalla.</text></g>
+<rect x="40" y="580" width="820" height="4" rx="2" fill="#d9e0e8"/><rect x="40" y="580" width="0" height="4" rx="2" fill="#ef6c35"><animate attributeName="width" values="0;820" dur="14s" repeatCount="indefinite"/></rect>
+</svg>
