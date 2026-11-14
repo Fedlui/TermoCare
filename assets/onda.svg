@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="450" viewBox="0 0 1200 450" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="450" fill="#ffffff"/>
+  <text x="40" y="44" font-size="22" font-weight="700" fill="#1d3557">Una red con ondas dentro de la piel</text>
+  <text x="40" y="70" font-size="15" fill="#5c6b7a">El calentador emite una onda de calor; dos receptores la escuchan a distinta distancia.</text>
+  <!-- capas -->
+  <g transform="translate(40,130)">
+    <rect width="520" height="40" fill="#f4d3c0"/><rect y="40" width="520" height="90" fill="#f7e3a3"/><rect y="130" width="520" height="130" fill="#e8a49c"/>
+    <text x="512" y="26" font-size="13" fill="#7a4a3a" text-anchor="end">piel</text>
+    <text x="512" y="92" font-size="13" fill="#7a6420" text-anchor="end">grasa</text>
+    <text x="512" y="200" font-size="13" fill="#7a3530" text-anchor="end">músculo · núcleo</text>
+    <g fill="none" stroke="#ff6b35" stroke-width="2.5">
+      <path d="M120 0 A50 50 0 0 0 220 0" opacity="0.9"/>
+      <path d="M80 0 A90 90 0 0 0 260 0" opacity="0.6"/>
+      <path d="M40 0 A130 130 0 0 0 300 0" opacity="0.35"/>
+      <path d="M0 0 A170 170 0 0 0 340 0" opacity="0.18"/>
+    </g>
+    <rect x="135" y="-14" width="70" height="14" rx="4" fill="#ff6b35"/>
+    <text x="170" y="-22" font-size="13" fill="#c2410c" text-anchor="middle" font-weight="700">calentador</text>
+    <circle cx="260" cy="-6" r="9" fill="#e63946"/><text x="268" y="-22" font-size="13" fill="#e63946" text-anchor="middle" font-weight="700">T1 · 4 mm</text>
+    <circle cx="340" cy="-6" r="9" fill="#f4a261"/><text x="370" y="-22" font-size="13" fill="#d97706" text-anchor="middle" font-weight="700">T2 · 8 mm</text>
+    <line x1="170" y1="40" x2="170" y2="250" stroke="#1d3557" stroke-dasharray="5 5"/>
+    <text x="180" y="244" font-size="13" fill="#1d3557">la onda pierde fuerza y llega tarde</text>
+  </g>
+  <!-- señales -->
+  <g transform="translate(620,120)">
+    <line x1="0" y1="250" x2="540" y2="250" stroke="#9aa5b1"/><line x1="0" y1="0" x2="0" y2="250" stroke="#9aa5b1"/>
+    <text x="540" y="272" font-size="13" fill="#5c6b7a" text-anchor="end">tiempo</text>
+    <text x="-6" y="-8" font-size="13" fill="#5c6b7a">temperatura</text>
+    <path d="M0 120 L60 120 L60 40 L180 40 L180 120 L300 120 L300 40 L420 40 L420 120 L540 120" fill="none" stroke="#ff6b35" stroke-width="2" stroke-dasharray="6 4"/>
+    <path d="M0 150 C40 150 70 70 120 70 S200 150 240 150 S310 70 360 70 S440 150 480 150 S520 110 540 100" fill="none" stroke="#e63946" stroke-width="3"/>
+    <path d="M0 185 C60 185 100 135 160 135 S250 185 290 185 S350 135 400 135 S490 185 530 185" fill="none" stroke="#f4a261" stroke-width="3"/>
+    <line x1="120" y1="62" x2="160" y2="62" stroke="#1d3557" stroke-width="1.5"/>
+    <text x="140" y="56" font-size="12" fill="#1d3557" text-anchor="middle">retraso</text>
+    
+    <text x="10" y="232" font-size="13" fill="#e63946" font-weight="700">T1: onda grande</text>
+    <text x="150" y="232" font-size="13" fill="#d97706" font-weight="700">T2: onda pequeña y tarde</text>
+    <text x="350" y="232" font-size="13" fill="#c2410c">calentador encendido / apagado</text>
+  </g>
+  <rect x="40" y="400" width="1120" height="1" fill="#e5e9ef"/>
+  <text x="40" y="428" font-size="15" fill="#1d3557">Atenuación y retraso entre T1 y T2 dicen cuánta grasa hay y cuánto calor viene del núcleo. Con eso se corrige la piel y se estima el núcleo.</text>
+</svg>

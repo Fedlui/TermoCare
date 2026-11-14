@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1b2d"/><stop offset="1" stop-color="#1d3557"/>
+    </linearGradient>
+    <linearGradient id="arm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e9b99a"/><stop offset="1" stop-color="#d89c7a"/>
+    </linearGradient>
+    <radialGradient id="heat" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff6b35" stop-opacity="0.9"/><stop offset="1" stop-color="#ff6b35" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="360" fill="url(#bg)"/>
+  <g opacity="0.08" stroke="#ffffff">
+    <path d="M0 300 Q150 260 300 300 T600 300 T900 300 T1200 300" fill="none" stroke-width="2"/>
+    <path d="M0 330 Q150 290 300 330 T600 330 T900 330 T1200 330" fill="none" stroke-width="2"/>
+  </g>
+  <text x="70" y="140" fill="#ffffff" font-size="64" font-weight="700">ThermoCare IoT</text>
+  <text x="72" y="190" fill="#a8dadc" font-size="24">La fiebre, vista como una onda.</text>
+  <text x="72" y="235" fill="#cdd6e0" font-size="17">Parche de antebrazo que estima la temperatura del núcleo</text>
+  <text x="72" y="260" fill="#cdd6e0" font-size="17">de pacientes en quimioterapia y avisa antes de que sea tarde.</text>
+  <text x="72" y="312" fill="#7f93a8" font-size="14" letter-spacing="2">GRUPO 504 · EQUIPO 5 · TECNOLÓGICO DE MONTERREY</text>
+  <g transform="translate(720,70)">
+    <path d="M0 150 C40 110 380 90 440 110 L440 200 C380 220 40 230 0 200 Z" fill="url(#arm)"/>
+    <circle cx="185" cy="152" r="110" fill="url(#heat)"/>
+    <g fill="none" stroke="#ffb703" stroke-width="2.5">
+      <circle cx="185" cy="152" r="26" opacity="0.95"/>
+      <circle cx="185" cy="152" r="48" opacity="0.6"/>
+      <circle cx="185" cy="152" r="72" opacity="0.35"/>
+      <circle cx="185" cy="152" r="98" opacity="0.15"/>
+    </g>
+    <rect x="160" y="128" width="120" height="48" rx="14" fill="#f1faee" stroke="#457b9d" stroke-width="3"/>
+    <rect x="176" y="144" width="18" height="16" rx="3" fill="#ff6b35"/>
+    <circle cx="222" cy="152" r="7" fill="#e63946"/>
+    <circle cx="256" cy="152" r="7" fill="#f4a261"/>
+    <text x="222" y="196" fill="#ffffff" font-size="12" text-anchor="middle">T1</text>
+    <text x="185" y="118" fill="#ffffff" font-size="12" text-anchor="middle">emisor</text>
+    <text x="256" y="196" fill="#ffffff" font-size="12" text-anchor="middle">T2</text>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="170" viewBox="0 0 1200 170" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1200" height="170" fill="#ffffff"/>
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2a9d8f"/><stop offset="0.5" stop-color="#2a9d8f"/><stop offset="0.5" stop-color="#e9c46a"/><stop offset="0.6" stop-color="#e9c46a"/><stop offset="0.6" stop-color="#e76f51"/><stop offset="1" stop-color="#c1121f"/></linearGradient></defs>
+  <rect x="60" y="50" width="1080" height="36" rx="18" fill="url(#g)"/>
+  <g font-size="14" fill="#1d3557" text-anchor="middle">
+    <text x="60" y="110">35 °C</text><text x="600" y="110">37.5 °C</text><text x="708" y="110">38.0 °C</text><text x="740" y="40">38.3 °C</text><text x="1140" y="110">40 °C</text>
+  </g>
+  <line x1="740" y1="46" x2="740" y2="90" stroke="#1d3557" stroke-width="2"/>
+  <g font-size="15" font-weight="700" text-anchor="middle">
+    <text x="330" y="145" fill="#2a9d8f">VERDE · normal</text>
+    <text x="654" y="145" fill="#b8860b">AMARILLO</text>
+    <text x="930" y="145" fill="#c1121f">ROJO · alerta de fiebre</text>
+  </g>
+  <text x="60" y="28" font-size="15" fill="#5c6b7a">Temperatura del núcleo estimada</text>
+</svg>

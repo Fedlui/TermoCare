@@ -1,169 +1,231 @@
-# 🌡️ ThermoCare IoT
+<p align="center">
+  <img src="assets/banner.svg" alt="ThermoCare IoT" width="100%">
+</p>
 
-**Parche de antebrazo que vigila la temperatura del núcleo del cuerpo de pacientes en quimioterapia y avisa de la fiebre antes de que sea tarde.**
+<p align="center">
+  <a href="https://github.com/users/Fedlui/projects/6"><img src="https://img.shields.io/badge/Tablero-Kanban-1d3557?style=for-the-badge" alt="Tablero"></a>
+  <a href="../../issues?q=is%3Aissue"><img src="https://img.shields.io/badge/Backlog-27_historias-457b9d?style=for-the-badge" alt="Backlog"></a>
+  <img src="https://img.shields.io/badge/NodeMCU-ESP8266-e63946?style=for-the-badge" alt="NodeMCU">
+  <img src="https://img.shields.io/badge/API-Node.js-2a9d8f?style=for-the-badge" alt="Node.js">
+  <img src="https://img.shields.io/badge/BD-MySQL-f4a261?style=for-the-badge" alt="MySQL">
+</p>
 
-Implementación de internet en las cosas · Grupo 504 · Equipo 5 · Tecnológico de Monterrey
+<br>
 
-[📋 Tablero Kanban](https://github.com/users/Fedlui/projects/6) · [🗓️ Sprints](../../milestones) · [✅ Backlog](../../issues?q=is%3Aissue) · [📄 Diseño de la base de datos](docs/Etapa2-Software-Equipo5.pdf)
+> **Durante la quimioterapia, una fiebre puede ser la primera señal de una infección grave que necesita atención en menos de una hora.**
+> Hoy la temperatura se toma pocas veces al día. ThermoCare la vigila todo el tiempo.
 
----
+<br>
 
-## 🩺 El problema
+## La idea en una frase
 
-Durante la quimioterapia las defensas bajan y **la fiebre puede ser la primera señal de una infección grave** (neutropenia febril), que necesita atención en menos de una hora. Hoy la temperatura se toma pocas veces al día y el paracetamol o los esteroides pueden ocultarla entre una toma y otra. Solo en México hubo **207,154 casos nuevos de cáncer en 2022** (GLOBOCAN).
+Un parche en el antebrazo **envía una pequeña onda de calor hacia la piel y escucha cómo regresa**. Con lo que tarda y lo que se debilita, calcula la temperatura del interior del cuerpo, no solo la de la piel.
 
-Muchos de estos pacientes usan **marcapasos**, así que el sistema no usa el ritmo cardíaco y no debe interferir con dispositivos implantados.
+<p align="center">
+  <img src="assets/onda.svg" alt="Cómo viaja la onda de calor entre el emisor y los receptores" width="100%">
+</p>
 
-## 💡 La solución
+| | Emisor | Receptor 1 | Receptor 2 | Referencia |
+| :-- | :-- | :-- | :-- | :-- |
+| **Qué es** | Calentador diminuto | Termistor a 4 mm | Termistor a 8 mm | Termistor del cuarto |
+| **Qué hace** | Prende y apaga en ciclos | Recibe la onda fuerte | Recibe la onda débil y tarde | Mide el aire alrededor |
+| **Qué aporta** | La señal conocida | La temperatura de la piel | El retraso y la atenuación | La pérdida de calor al ambiente |
 
-ThermoCare analiza la temperatura **como una red con ondas**: un calentador muy pequeño en el parche es el **emisor** y dos termistores a **4 mm y 8 mm** son los **receptores**. Con la atenuación y el retraso de la onda de calor entre ambos se corrige la lectura de la piel y se estima la temperatura del núcleo.
+Con esos datos se aplica:
 
 ```
 T_núcleo = T_piel + K · (T_piel − T_cuarto)
 ```
 
-Hoy la API usa **K = 0.28**; el objetivo es calcular K con el análisis de ondas de cada paciente.
+donde **K** sale del análisis de la onda: cuánta grasa hay bajo el parche y cuánto calor sube desde el núcleo. Con un modelo térmico del cuerpo, esa lectura del brazo se extiende a un mapa de temperatura de todo el cuerpo.
 
-## 🏗️ Cómo funciona
+<br>
+
+## Del parche al celular del médico
 
 ```mermaid
 flowchart LR
-    subgraph Parche["Parche en el antebrazo"]
-        S["Termistores, fotorresistencia<br/>y calentador"] --> N["NodeMCU ESP8266"]
-        N --> L["LED RGB<br/>semáforo"]
+    subgraph P[" Parche "]
+        direction TB
+        E(["Emisor de calor"]) -.onda.-> R(["Termistores T1 y T2"])
+        C(["Termistor del cuarto"])
+        L(["Fotorresistencia"])
     end
-    N -- "JSON por WiFi" --> A["API REST<br/>Node.js + Express"]
-    A --> D[("MySQL<br/>thermocare")]
-    A -- "fiebre o parche despegado" --> T["Bot de Telegram<br/>médico y familia"]
+    P --> N["NodeMCU<br/>ESP8266"]
+    N -- "WiFi · JSON" --> A["API REST<br/>Node.js"]
+    A <--> D[("MySQL")]
+    A --> S{"¿Fiebre o<br/>parche suelto?"}
+    S -- sí --> T["Telegram<br/>médico y familia"]
     D --> G["Dashboard<br/>de enfermería"]
+    A -. color .-> N
+    N --> RGB(["LED semáforo"])
+
+    classDef hw fill:#fde2d4,stroke:#e63946,color:#1d3557
+    classDef sw fill:#dbeaf5,stroke:#457b9d,color:#1d3557
+    classDef al fill:#fff3c4,stroke:#e9c46a,color:#1d3557
+    class E,R,C,L,N,RGB hw
+    class A,D,G sw
+    class S,T al
 ```
 
-1. El **NodeMCU** lee los sensores y manda una lectura cada 10 segundos a la API.
-2. La **API** revisa los datos, calcula el núcleo, guarda la lectura en MySQL y responde el color del semáforo.
-3. Si hay **fiebre** o el **parche se despegó**, crea una alerta y avisa por **Telegram** al médico y a la familia.
-4. El **dashboard** muestra a todos los pacientes y su gráfica de 24 h.
+<br>
 
-## 🚦 Semáforo y alertas
+## Un día con ThermoCare
 
-| Color | Temperatura del núcleo | Qué pasa |
-| --- | --- | --- |
-| 🟢 Verde | menos de 37.5 °C | Normal |
-| 🟡 Amarillo | 37.5 a 37.9 °C | Precaución |
-| 🔴 Rojo | 38.0 °C o más | Alerta de fiebre por Telegram |
-| ⚪ Revisar parche | entra luz bajo el parche | La lectura no se usa para fiebre |
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Pa as Parche
+    participant Api as Nube
+    participant Enf as Enfermería
+    participant Fam as Familia
+    Pa->>Api: Lectura cada pocos segundos
+    Api-->>Pa: Semáforo verde
+    Note over Pa,Api: Horas después, la temperatura empieza a subir
+    Pa->>Api: Núcleo 37.7 °C
+    Api-->>Pa: Semáforo amarillo
+    Pa->>Api: Núcleo 38.4 °C
+    Api->>Enf: Alerta de fiebre en el dashboard
+    Api->>Fam: Mensaje por Telegram
+    Enf->>Api: Alerta atendida
+```
 
-Meta para el Sprint 3: alarma de neutropenia febril con **38.3 °C una vez o 38.0 °C sostenidos 1 hora**.
+<br>
 
-## 🔌 Hardware
+## El semáforo
 
-| Componente | Función | Estado |
-| --- | --- | --- |
-| NodeMCU ESP8266 | Lee sensores y envía por WiFi | ✅ |
-| 2 termistores NTC 10k β3950 (4 y 8 mm) | Receptores de la onda en la piel | 🟠 En progreso |
-| Termistor NTC del cuarto | Temperatura del aire | 🟠 En progreso |
-| Convertidor ADS1115 (16 bits) | Lee los termistores con precisión | 🟠 En progreso |
-| Fotorresistencia | Detecta si el parche está pegado | ✅ |
-| Resistencia calentadora + MOSFET IRLZ44N | Emite la onda de calor | 🟠 En progreso |
-| Termostato KSD9700 40 °C | Corte de seguridad del calentador | 🟠 En progreso |
-| LED RGB | Semáforo local | ✅ |
+<p align="center">
+  <img src="assets/escala.svg" alt="Escala de colores de la temperatura del núcleo" width="100%">
+</p>
 
-Mientras llegan los sensores definitivos, el circuito usa los del kit (DHT11 y PIR) con el **mismo formato de datos**, así que la API y la base de datos no cambian.
+La alarma clínica de **neutropenia febril** se dispara con **38.3 °C una vez** o **38.0 °C sostenidos durante una hora**. Si entra luz bajo el parche, la lectura no se usa y el sistema pide **revisar el parche** en lugar de dar una falsa alarma.
 
-## 🗄️ Base de datos
+<br>
 
-MySQL 8.0 (InnoDB), base `thermocare`, 12 tablas en 3NF.
+## Quién lo usa
+
+<table>
+<tr>
+<td width="25%" valign="top">
+
+**Paciente**
+
+Lleva el parche y ve en el LED si todo va bien. No tiene que acordarse de medirse.
+
+</td>
+<td width="25%" valign="top">
+
+**Enfermería**
+
+Ve a todos sus pacientes en una pantalla y recibe la alerta en tiempo real.
+
+</td>
+<td width="25%" valign="top">
+
+**Médico**
+
+Revisa la gráfica de 24 horas con medicamentos y alertas marcados.
+
+</td>
+<td width="25%" valign="top">
+
+**Familia**
+
+Recibe el aviso de fiebre en su celular por Telegram.
+
+</td>
+</tr>
+</table>
+
+<br>
+
+## Lo que hay adentro
+
+<table>
+<tr>
+<th>Sentir</th><th>Pensar</th><th>Avisar</th>
+</tr>
+<tr>
+<td valign="top">
+
+- 3 termistores NTC 10k β3950
+- Convertidor ADS1115 de 16 bits
+- Fotorresistencia para saber si el parche está pegado
+
+</td>
+<td valign="top">
+
+- NodeMCU ESP8266 con WiFi
+- API REST en Node.js
+- Base de datos MySQL
+- Cálculo del núcleo con análisis de ondas
+
+</td>
+<td valign="top">
+
+- Calentador con MOSFET (la onda)
+- LED RGB de semáforo
+- Bot de Telegram
+- Dashboard de enfermería
+
+</td>
+</tr>
+</table>
+
+<br>
+
+## Cómo se guarda la información
 
 ```mermaid
 erDiagram
-    DISPOSITIVO ||--o| PACIENTE : usa
+    PACIENTE ||--|| DISPOSITIVO : usa
     DISPOSITIVO ||--o{ LECTURA : registra
     DISPOSITIVO ||--o{ ONDA_CALOR : emite
     PACIENTE ||--o{ ALERTA : genera
     PACIENTE ||--o{ MEDICAMENTO : recibe
-    PACIENTE ||--|{ TRATA : ""
-    PERSONAL_MEDICO ||--o{ TRATA : ""
-    PACIENTE ||--o{ APOYA : ""
-    PERSONA_APOYO ||--o{ APOYA : ""
+    PERSONAL_MEDICO }o--|{ PACIENTE : trata
+    PERSONA_APOYO }o--o{ PACIENTE : apoya
     PERSONAL_MEDICO ||--o{ ALERTA : atiende
-    PERSONAL_MEDICO ||--o{ TELEFONO_PERSONAL : tiene
-    PERSONA_APOYO ||--o{ TELEFONO_APOYO : tiene
 ```
 
-El modelo Chen, el relacional, la normalización y el diccionario de datos están en [`docs/Etapa2-Software-Equipo5.pdf`](docs/Etapa2-Software-Equipo5.pdf).
+Cada lectura queda ligada a su parche y a su hora; cada onda de calor, a su inicio, fin y potencia; cada alerta, al paciente y a quien la atendió. El diseño completo está en [`docs/`](docs/).
 
-## 🔗 API REST
+<br>
 
-Puerto `3000`. Las rutas usan el número del dispositivo, paciente o alerta.
-
-| Método | Ruta | Quién la usa | Qué hace |
-| --- | --- | --- | --- |
-| `GET` | `/` | Pruebas | Confirma que la API está encendida |
-| `POST` | `/lecturas` | NodeMCU | Guarda una lectura, revisa alertas y regresa el semáforo |
-| `GET` | `/lecturas` | Consulta | Últimas lecturas con dispositivo y paciente |
-| `GET` | `/dispositivos/:id/estado` | NodeMCU | Color del semáforo y cada cuánto mandar datos |
-| `GET` | `/pacientes/:id/temperatura` | Dashboard | Núcleo actual y si va subiendo o bajando |
-| `GET` | `/alertas` | Dashboard y bot | Alertas, o solo las activas |
-| `PUT` | `/alertas/:id/atender` | Personal médico | Marca una alerta como atendida |
-
-Lo que manda el NodeMCU:
-
-```json
-{
-  "id_dispositivo": 1,
-  "temp_piel": 34.1,
-  "temp_flujo": 33.6,
-  "temp_cuarto": 24.0,
-  "parche_colocado": 1,
-  "calentador_encendido": 0
-}
-```
-
-Respuestas: `201` guardada · `200` consulta · `400` datos mal · `404` no existe · `500` falla al guardar · `503` MySQL apagado.
-
-## 📁 Repositorio
+## El repositorio
 
 ```
 TermoCare/
-├── docs/       Entregables de cada etapa (PDF)
-├── sql/        Script de creación, datos de prueba e indicadores
-├── api/        API REST en Node.js (Express + mysql2)
-└── arduino/    Código del NodeMCU
+├── assets/     Imágenes de este README
+├── docs/       Documentación y entregables
+├── sql/        Creación de la base de datos, datos de prueba e indicadores
+├── api/        API REST en Node.js
+└── arduino/    Código del parche (NodeMCU)
 ```
 
-### Correr el proyecto
+<br>
 
-1. **Base de datos:** abre XAMPP, inicia MySQL y ejecuta `sql/ScriptCreacionBaseDatos_iot_Equipo5.sql`.
-2. **API:** en `api/` corre `npm install` y luego `node RestApi-<matrícula>.js`. Configura MySQL, límites y token de Telegram en `config.js`.
-3. **NodeMCU:** abre el `.ino` de `arduino/` en Arduino IDE (placa *NodeMCU 1.0*), escribe tu WiFi y la IP de tu computadora, y súbelo. Monitor serial a 115200.
+## Equipo
 
-## 🗓️ Plan
+<table>
+<tr>
+<td align="center" width="20%"><b>Federico Salazar</b><br><sub>Product Owner</sub><br><sub>Datos</sub></td>
+<td align="center" width="20%"><b>José Ángel López</b><br><sub>Scrum Master</sub><br><sub>Calidad y seguridad</sub></td>
+<td align="center" width="20%"><b>Antonio Gómez</b><br><sub>Hardware</sub><br><sub>y experimento</sub></td>
+<td align="center" width="20%"><b>Francisco González</b><br><sub>Actuadores</sub><br><sub>y alertas</sub></td>
+<td align="center" width="20%"><b>Raúl Anguiano</b><br><sub>Dashboard</sub><br><sub>y algoritmo</sub></td>
+</tr>
+</table>
 
-| Sprint | Fechas | Objetivo | Estado |
-| --- | --- | --- | --- |
-| 0 | 26 – 30 oct | Tablero, repositorio y base de datos | ✅ |
-| 1 | 2 – 6 nov | Lectura de sensores y LEDs | 🟠 |
-| 2 | 9 – 13 nov | Calentador, envío a la nube y diseño de la BD | 🟠 |
-| 3 | 16 – 20 nov | Análisis de ondas, núcleo y alarma de fiebre | ⚪ |
-| 4 | 23 – 27 nov | Dashboard y alertas por Telegram | ⚪ |
-| 5 | 30 nov – 4 dic | Inicio de sesión, alerta temprana, 3D y expo | ⚪ |
+<p align="center"><sub>Implementación de internet en las cosas · Grupo 504 · Profesores Enrique Gonzales Guerrero y Jesús Carlos Morón García</sub></p>
 
-El detalle de cada historia está en el [tablero](https://github.com/users/Fedlui/projects/6) y en los [issues](../../issues?q=is%3Aissue).
+<br>
 
-## 👥 Equipo
+## Seguridad
 
-| Integrante | Matrícula | Rol |
-| --- | --- | --- |
-| Federico Luis Salazar Guzmán | A01174886 | Product Owner · datos |
-| José Ángel López Arvayo | A00843562 | Scrum Master · calidad y seguridad |
-| Antonio Daniel Gómez García | A01199791 | Hardware y experimento |
-| Francisco González Brito | A00841560 | Actuadores, alertas y Telegram |
-| Raúl Alejandro Anguiano Solano | A01742895 | Dashboard y algoritmo de ondas |
-
-**Profesores:** Enrique Gonzales Guerrero y Jesús Carlos Morón García.
-
-## ⚠️ Seguridad
-
-- Las pruebas con el parche se hacen **solo con un integrante sano, sin marcapasos ni implantes**. Nunca con pacientes.
-- El parche se alimenta **solo con power bank**, nunca conectado a la laptop o al cargador mientras se usa.
-- El calentador tiene doble corte: por software a 38.5 °C en la piel y por el termostato KSD9700 a 40 °C.
-- Es un prototipo escolar, **no es un dispositivo médico**.
+> [!WARNING]
+> ThermoCare es un **prototipo escolar**, no un dispositivo médico.
+> - Las pruebas se hacen solo con un integrante sano, **sin marcapasos ni implantes**. Nunca con pacientes.
+> - El parche funciona **solo con power bank**, nunca conectado a la laptop o al cargador mientras se usa.
+> - El calentador tiene doble corte de seguridad: por software y por un termostato de 40 °C.
+> - El sistema no usa el ritmo cardíaco, para no depender de nada que pueda afectar un marcapasos.
