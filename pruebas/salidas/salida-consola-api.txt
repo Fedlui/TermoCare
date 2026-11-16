@@ -1,0 +1,14 @@
+ThermoCare API escuchando en http://localhost:3000
+[17:48:53] GET / -> 200 (17 ms)
+[17:48:54] POST /lecturas -> 201 (6 ms)
+[17:48:54] POST /lecturas -> 201 (3 ms)
+[17:48:54] POST /lecturas -> 201 (6 ms)
+[TELEGRAM sin enviar] ThermoCare: Ana Rivera tiene fiebre (38.72 °C). Revisar lo antes posible.
+[17:48:54] POST /lecturas -> 201 (4 ms)
+[17:48:54] POST /lecturas -> 201 (7 ms)
+[TELEGRAM sin enviar] ThermoCare: el parche de Ana Rivera se despegó. Hay que volver a colocarlo.
+[17:48:54] POST /lecturas -> 400 (2 ms)
+[17:48:54] GET /dispositivos/1/estado -> 200 (2 ms)
+[17:48:54] POST /lecturas -> 404 (3 ms)
+[17:48:54] GET /pacientes/1/temperatura -> 200 (2 ms)
+[17:48:54] PUT /alertas/4/atender -> 200 (2 ms)

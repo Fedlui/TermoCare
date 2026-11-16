@@ -1,0 +1,16 @@
+{
+  "name": "thermocare-api",
+  "version": "1.0.0",
+  "description": "API REST de ThermoCare IoT: recibe las lecturas del parche, las guarda en MySQL y genera alertas",
+  "main": "RestApi-Equipo5.js",
+  "scripts": {
+    "start": "node RestApi-Equipo5.js",
+    "simulador": "node simulador-nodemcu.js",
+    "pruebas": "node ../pruebas/pruebas-api.js"
+  },
+  "dependencies": {
+    "express": "4.21.2",
+    "mysql2": "3.11.5"
+  },
+  "license": "MIT"
+}
