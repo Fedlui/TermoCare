@@ -7,6 +7,8 @@ MySQL 8.0, base `thermocare`, 12 tablas en tercera forma normal.
 | `ScriptCreacionBaseDatos_iot_Equipo5.sql` | Crea la base de datos con sus tablas, llaves y restricciones |
 | `DatosPrueba_iot_Equipo5.sql` | 2 parches, 2 pacientes, personal médico, familiares, 72 lecturas de las últimas 24 horas y 3 alertas |
 | `indicadores_iot_Equipo5.sql` | Temperatura del núcleo por hora, alertas por paciente y colocación del parche |
+| `DatosDashboard_iot_Equipo5.sql` | Datos simulados para el dashboard: 5 pacientes, 7 días de lecturas cada 10 min, alertas, medicamentos y ondas. Borra los datos actuales |
+| `consultas_dashboard_iot_Equipo5.sql` | Una consulta por cada gráfica del dashboard |
 
 ## Cómo cargarla
 
